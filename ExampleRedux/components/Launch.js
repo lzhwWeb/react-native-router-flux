@@ -3,6 +3,10 @@ import {View, Text, StyleSheet} from "react-native";
 import Button from "react-native-button";
 import {Actions} from "react-native-router-flux";
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from './actions';
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -20,7 +24,6 @@ class Launch extends React.Component {
 	}
 
     render(){
-
 		const { state, increment, decrement } = this.props;
 
 		console.log("Props 2: ", this.props, state, increment, decrement);
@@ -44,4 +47,11 @@ class Launch extends React.Component {
     }
 }
 
-module.exports = Launch;
+
+export default connect(state => ({
+   state: state.counter
+ }),
+ (dispatch) => ({
+   actions: bindActionCreators(actions, dispatch)
+ })
+)(Launch);
