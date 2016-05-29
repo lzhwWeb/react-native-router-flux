@@ -6,9 +6,10 @@ const initialState = {
 
 export default function counter(state = initialState, action = {}) {
 
+	console.log("Reducer: ", state, action);
+	
   switch (action.type) {
 	  case "INCREMENT":
-
 		console.log("do increment", state,
 			{
 				...state,

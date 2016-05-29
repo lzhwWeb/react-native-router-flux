@@ -28,9 +28,19 @@ const styles = StyleSheet.create({
 
 
 class Login extends React.Component {
+	constructor(props) {
+		super(props);
+		console.log('LOGIN', props);
+	}
+
     render(){
-		const { state, increment, decrement } = this.props;
+		const { state, actions } = this.props;
+
+		const { increment, decrement } = actions;
+
+		console.log("Actions", actions);
 		console.log("Props 2: ", this.props, state, increment, decrement);
+		console.log("Increment: ", increment);
 
         return (
             <View style={[styles.container, this.props.style]}>

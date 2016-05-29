@@ -20,13 +20,22 @@ class Launch extends React.Component {
 
 	constructor(props) {
 		super(props);
-		console.log(props);
+		console.log('LAUNCH', props);
+	}
+
+	componentDidMount() {
+		const { state, increment, decrement } = this.props;
+		if(this.props.state.count == 0) increment()
 	}
 
     render(){
-		const { state, increment, decrement } = this.props;
+		const { state, actions } = this.props;
 
-		console.log("Props 2: ", this.props, state, increment, decrement);
+		const { increment, decrement } = actions;
+
+		console.log("Actions", actions);
+		console.log("Props: ", this.props, state, increment, decrement);
+		console.log("Increment: ", increment);
 
         return (
             <View {...this.props}  style={styles.container}>
